@@ -45,21 +45,23 @@ Widget DefaultFormField(
         double? container_height,
         double? container_width,
         var suffixbutton}) =>
-    TextFormField(
-        controller: controller,
-        keyboardType: texttype,
-        obscureText: password,
-        maxLines: maxlines,
-        decoration: InputDecoration(
-            // hintText: 'Email Address',
-            prefixIcon: Icon(prefixicon == null ? null : prefixicon),
-            suffixIcon: IconButton(
-                onPressed: suffixbutton,
-                icon: Icon(sufixicon == null ? null : sufixicon)),
-            labelText: label,
-            border:
-                OutlineInputBorder(borderRadius: BorderRadius.circular(10))),
-        validator: validate);
+    Container(
+      child: TextFormField(
+          controller: controller,
+          keyboardType: texttype,
+          obscureText: password,
+          maxLines: maxlines,
+          decoration: InputDecoration(
+              // hintText: 'Email Address',
+              prefixIcon: Icon(prefixicon == null ? null : prefixicon),
+              suffixIcon: IconButton(
+                  onPressed: suffixbutton,
+                  icon: Icon(sufixicon == null ? null : sufixicon)),
+              labelText: label,
+              border:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(10))),
+          validator: validate),
+    );
 
 Widget taskslist({required Map items}) => Padding(
       padding: const EdgeInsets.all(20.0),
