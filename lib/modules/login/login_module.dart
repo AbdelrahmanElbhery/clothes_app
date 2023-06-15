@@ -1,6 +1,7 @@
 import 'package:clothes_shop/modules/admin/admin_home.dart';
 import 'package:clothes_shop/modules/login/cubit/cubit.dart';
 import 'package:clothes_shop/modules/update%20info.dart';
+import 'package:clothes_shop/on_board.dart';
 import 'package:clothes_shop/shared/cache.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -149,7 +150,7 @@ class ShopLogin extends StatelessWidget {
                   DefaultButton(
                       function: () {
                         navigateandfinish(
-                            context: context, widget: AdminHome());
+                            context: context, widget: BottomNav());
                       },
                       text: 'تخطي',
                       color: Colors.white,

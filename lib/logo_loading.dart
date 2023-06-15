@@ -32,7 +32,7 @@ class Loading extends StatelessWidget {
               height: 15,
             ),
             CircularProgressIndicator(
-              color: Colors.lightGreenAccent,
+              color: Colors.deepOrangeAccent,
             )
           ],
         ),

@@ -40,14 +40,14 @@ class Home extends StatelessWidget {
                     CarouselSlider.builder(
                       options: CarouselOptions(
                           autoPlay: true,
-                          autoPlayAnimationDuration: Duration(seconds: 1),
+                          autoPlayAnimationDuration: const Duration(seconds: 1),
                           scrollDirection: Axis.horizontal,
                           height: 250,
                           reverse: false,
                           initialPage: 0,
                           autoPlayCurve: Curves.fastLinearToSlowEaseIn,
                           viewportFraction: 1,
-                          autoPlayInterval: Duration(seconds: 3),
+                          autoPlayInterval: const Duration(seconds: 3),
                           enableInfiniteScroll: true),
                       itemCount: images.length,
                       itemBuilder: (context, index, pageindex) => Stack(
@@ -57,37 +57,18 @@ class Home extends StatelessWidget {
                             image: AssetImage(images[index]),
                             fit: BoxFit.cover,
                           ),
-                          // Align(
-                          //   alignment: AlignmentDirectional.center,
-                          //   child: Column(
-                          //     mainAxisSize: MainAxisSize.min,
-                          //     children: [
-                          //       Text(
-                          //         'bla bla',
-                          //         style: TextStyle(
-                          //             fontWeight: FontWeight.w700,
-                          //             fontSize: 15),
-                          //       ),
-                          //       Text(
-                          //         'bla bla',
-                          //         style: TextStyle(
-                          //             fontWeight: FontWeight.w700,
-                          //             fontSize: 15),
-                          //       ),
-                          //     ],
-                          //   ),
-                          // ),
                         ],
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     InkWell(
                       onTap: () {
-                        navigate_to(context: context, widget: ArticlesScreen());
+                        navigate_to(
+                            context: context, widget: const ArticlesScreen());
                       },
-                      child: Container(
+                      child: SizedBox(
                         height: MediaQuery.of(context).size.height * 0.25,
                         width: double.infinity,
                         child: Card(
@@ -102,8 +83,8 @@ class Home extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Image(
-                                  image:
-                                      AssetImage('assets/images/clothes.jpg'),
+                                  image: const AssetImage(
+                                      'assets/images/clothes.jpg'),
                                   fit: BoxFit.cover,
                                   width:
                                       MediaQuery.of(context).size.width * .32,
@@ -118,7 +99,7 @@ class Home extends StatelessWidget {
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.end,
                                     children: [
-                                      Text(
+                                      const Text(
                                         textDirection: TextDirection.rtl,
                                         'تابع احدث الاخبار والمقالات عن الملابس',
                                         style: TextStyle(
@@ -126,11 +107,11 @@ class Home extends StatelessWidget {
                                             fontSize: 20,
                                             fontWeight: FontWeight.w800),
                                       ),
-                                      Container(
+                                      SizedBox(
                                         height:
                                             MediaQuery.of(context).size.height *
                                                 .11,
-                                        child: Text(
+                                        child: const Text(
                                           'احصل على العديد من المعلومات الرائعة عن الاقمشة ',
                                           style: TextStyle(
                                               color: Colors.white,
@@ -149,14 +130,14 @@ class Home extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
                     InkWell(
                       onTap: () {
                         HomeCubit.get(context).change_Bottom(1);
                       },
-                      child: Row(
+                      child: const Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Icon(
@@ -174,12 +155,12 @@ class Home extends StatelessWidget {
                         ],
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     if (HomeCubit.get(context).products.length > 1)
                       GridView.count(
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         crossAxisSpacing: 2,
                         mainAxisSpacing: 10,
                         childAspectRatio:
@@ -191,16 +172,18 @@ class Home extends StatelessWidget {
                           gridStructure(context, cubit.products[1]),
                         ],
                       ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                   ],
                 ),
               ),
             ),
-            fallback: (context) => Center(child: CircularProgressIndicator()),
+            fallback: (context) =>
+                const Center(child: CircularProgressIndicator()),
           ),
-          fallback: (context) => Center(child: CircularProgressIndicator()),
+          fallback: (context) =>
+              const Center(child: CircularProgressIndicator()),
         );
       },
     );
@@ -248,27 +231,22 @@ class Home extends StatelessWidget {
                         children: [
                           AutoSizeText(
                             model.price_piece.toString(),
-                            style: TextStyle(color: Colors.blue, fontSize: 15),
+                            style: const TextStyle(
+                                color: Colors.blue, fontSize: 15),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 5,
                           ),
-                          Spacer(),
+                          const Spacer(),
                           IconButton(
                             alignment: AlignmentDirectional.topCenter,
                             onPressed: () {
                               HomeCubit.get(context)
                                   .checkiscontain(context, model);
-                              if (HomeCubit.get(context).changefav!) {
-                                print(HomeCubit.get(context)
-                                    .favouriteproducts
-                                    .contains(model));
+                              if (HomeCubit.get(context).changefav) {
                                 HomeCubit.get(context)
                                     .removeFav(model.uid, uidfav);
                               } else {
-                                print(HomeCubit.get(context)
-                                    .favouriteproducts
-                                    .contains(model));
                                 HomeCubit.get(context).addFav(model, uidfav);
                               }
                             },
@@ -280,8 +258,8 @@ class Home extends StatelessWidget {
                                   ? Colors.red
                                   : Colors.grey,
                             ),
-                            visualDensity:
-                                VisualDensity(horizontal: -2, vertical: -2),
+                            visualDensity: const VisualDensity(
+                                horizontal: -2, vertical: -2),
                           )
                         ],
                       ),

@@ -31,7 +31,7 @@
 
 
     <application
-        android:label="Rayon Wear"
+        android:label="Clothes Shop"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
