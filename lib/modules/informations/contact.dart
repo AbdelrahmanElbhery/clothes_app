@@ -100,7 +100,8 @@ class ContactUs extends StatelessWidget {
                       ),
                       InkWell(
                         onTap: () async {
-                          await launchUrl(Uri.parse('http://m.me/RayanWear1'),
+                          await launchUrl(
+                              Uri.parse('http://m.me/boody.elbhery'),
                               mode: LaunchMode.externalApplication);
                         },
                         child: Container(
@@ -291,7 +292,7 @@ class ContactUs extends StatelessWidget {
   }
 
   Future<void> launchfacebook() async {
-    final Uri url = Uri.parse('https://www.facebook.com/RayanWear1');
+    final Uri url = Uri.parse('https://www.facebook.com/boody.elbhery');
     if (!await launchUrl(
       url,
       mode: LaunchMode.externalApplication,
@@ -301,7 +302,7 @@ class ContactUs extends StatelessWidget {
   }
 
   Future<void> launchgps() async {
-    final Uri url = Uri.parse('https://goo.gl/maps/BPWjNnMnqFy5BCUF7');
+    final Uri url = Uri.parse('https://goo.gl/maps/bbxV9ZWt4YZ3ogdC6');
     if (!await launchUrl(
       url,
       mode: LaunchMode.externalApplication,
@@ -311,7 +312,7 @@ class ContactUs extends StatelessWidget {
   }
 
   Future<void> messenger() async {
-    final Uri url = Uri.parse("http://m.me/RayanWear1");
+    final Uri url = Uri.parse("http://m.me/boody.elbhery");
     if (await canLaunchUrl(url)) {
       await launchUrl(url, mode: LaunchMode.externalApplication);
     } else {

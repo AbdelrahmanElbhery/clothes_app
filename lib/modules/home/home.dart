@@ -69,7 +69,6 @@ class Home extends StatelessWidget {
                             context: context, widget: const ArticlesScreen());
                       },
                       child: SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.25,
                         width: double.infinity,
                         child: Card(
                           shape: RoundedRectangleBorder(

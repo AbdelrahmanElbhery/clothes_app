@@ -22,16 +22,14 @@ class Products extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 GridView.count(
-                    physics: NeverScrollableScrollPhysics(),
-                    crossAxisSpacing: 2,
-                    mainAxisSpacing: 10,
+                    physics: const NeverScrollableScrollPhysics(),
                     childAspectRatio:
                         MediaQuery.of(context).size.aspectRatio * 1.38,
                     shrinkWrap: true,
@@ -63,7 +61,7 @@ class Products extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Image(
-                  height: MediaQuery.of(context).size.height * .22,
+                  height: MediaQuery.of(context).size.height * .2,
                   image: NetworkImage(model.mainimage!),
                   width: double.infinity,
                   fit: BoxFit.fill,
@@ -79,20 +77,18 @@ class Products extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                         maxLines: 2,
                       ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * .005,
+                      const SizedBox(
+                        height: 5,
                       ),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
                             model.minnumber.toString(),
-                            style: TextStyle(color: Colors.blue, fontSize: 15),
+                            style: const TextStyle(
+                                color: Colors.blue, fontSize: 15),
                           ),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          Spacer(),
                           IconButton(
                             alignment: AlignmentDirectional.topCenter,
                             onPressed: () {
@@ -119,8 +115,8 @@ class Products extends StatelessWidget {
                                   ? Colors.red
                                   : Colors.grey,
                             ),
-                            visualDensity:
-                                VisualDensity(horizontal: -2, vertical: -2),
+                            visualDensity: const VisualDensity(
+                                horizontal: -2, vertical: -2),
                           )
                         ],
                       ),
