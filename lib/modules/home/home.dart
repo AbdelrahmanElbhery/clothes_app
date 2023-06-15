@@ -161,9 +161,7 @@ class Home extends StatelessWidget {
                       GridView.count(
                         physics: const NeverScrollableScrollPhysics(),
                         crossAxisSpacing: 2,
-                        mainAxisSpacing: 10,
-                        childAspectRatio:
-                            MediaQuery.of(context).size.aspectRatio * 1.42,
+                        childAspectRatio: 1 / 1.6,
                         shrinkWrap: true,
                         crossAxisCount: 2,
                         children: [
@@ -192,80 +190,83 @@ class Home extends StatelessWidget {
         onTap: () {
           navigate_to(context: context, widget: InProduct(model));
         },
-        child: Card(
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-          elevation: 6,
-          child: Container(
-            height: MediaQuery.of(context).size.height * .1,
-            color: Colors.white,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Image(
-                  height: MediaQuery.of(context).size.height * .20,
-                  image: NetworkImage(model.mainimage!),
-                  width: double.infinity,
-                  fit: BoxFit.fill,
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      AutoSizeText(
-                        model.title!,
-                        textDirection: TextDirection.rtl,
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 2,
-                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                            fontSize: 15, fontWeight: FontWeight.bold),
+        child: SizedBox(
+          child: Card(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+            elevation: 6,
+            child: Container(
+              color: Colors.white,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    width: double.infinity,
+                    child: AspectRatio(
+                      aspectRatio: 1 / 1,
+                      child: Image(
+                        image: NetworkImage(model.mainimage!),
+                        width: double.infinity,
+                        fit: BoxFit.fill,
                       ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * .01,
-                      ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          AutoSizeText(
-                            model.price_piece.toString(),
-                            style: const TextStyle(
-                                color: Colors.blue, fontSize: 15),
-                          ),
-                          const SizedBox(
-                            width: 5,
-                          ),
-                          const Spacer(),
-                          IconButton(
-                            alignment: AlignmentDirectional.topCenter,
-                            onPressed: () {
-                              HomeCubit.get(context)
-                                  .checkiscontain(context, model);
-                              if (HomeCubit.get(context).changefav) {
-                                HomeCubit.get(context)
-                                    .removeFav(model.uid, uidfav);
-                              } else {
-                                HomeCubit.get(context).addFav(model, uidfav);
-                              }
-                            },
-                            icon: Icon(
-                              MdiIcons.heart,
-                              size: 20,
-                              color: HomeCubit.get(context)
-                                      .checkiscontain(context, model)
-                                  ? Colors.red
-                                  : Colors.grey,
-                            ),
-                            visualDensity: const VisualDensity(
-                                horizontal: -2, vertical: -2),
-                          )
-                        ],
-                      ),
-                    ],
+                    ),
                   ),
-                )
-              ],
+                  Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        AutoSizeText(
+                          model.title!,
+                          textDirection: TextDirection.rtl,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 2,
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * .01,
+                        ),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            AutoSizeText(
+                              model.price_piece.toString(),
+                              style: const TextStyle(
+                                  color: Colors.blue, fontSize: 15),
+                            ),
+                            const SizedBox(
+                              width: 5,
+                            ),
+                            const Spacer(),
+                            IconButton(
+                              alignment: AlignmentDirectional.topCenter,
+                              onPressed: () {
+                                HomeCubit.get(context)
+                                    .checkiscontain(context, model);
+                                if (HomeCubit.get(context).changefav) {
+                                  HomeCubit.get(context)
+                                      .removeFav(model.uid, uidfav);
+                                } else {
+                                  HomeCubit.get(context).addFav(model, uidfav);
+                                }
+                              },
+                              icon: Icon(
+                                MdiIcons.heart,
+                                size: 20,
+                                color: HomeCubit.get(context)
+                                        .checkiscontain(context, model)
+                                    ? Colors.red
+                                    : Colors.grey,
+                              ),
+                              visualDensity: const VisualDensity(
+                                  horizontal: -2, vertical: -2),
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
         ),

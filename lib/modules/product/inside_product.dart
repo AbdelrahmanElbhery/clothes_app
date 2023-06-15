@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:clothes_shop/models/productmodel.dart';
 import 'package:clothes_shop/modules/home/cubit/cubit.dart';
 import 'package:clothes_shop/modules/home/cubit/states.dart';
@@ -88,10 +89,17 @@ class InProduct extends StatelessWidget {
                                 SizedBox(
                                   width: 10,
                                 ),
-                                Text(
-                                  model!.title!,
-                                  textDirection: TextDirection.rtl,
-                                  style: Theme.of(context).textTheme.headline4,
+                                Expanded(
+                                  child: AutoSizeText(
+                                    maxLines: 1,
+                                    presetFontSizes: [34, 30, 25],
+                                    group: AutoSizeGroup(),
+                                    model!.title!,
+                                    textDirection: TextDirection.rtl,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headlineMedium,
+                                  ),
                                 ),
                               ],
                             ),

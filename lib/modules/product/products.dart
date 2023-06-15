@@ -25,13 +25,9 @@ class Products extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
                 GridView.count(
                     physics: const NeverScrollableScrollPhysics(),
-                    childAspectRatio:
-                        MediaQuery.of(context).size.aspectRatio * 1.38,
+                    childAspectRatio: 1 / 1.5,
                     shrinkWrap: true,
                     crossAxisCount: 2,
                     children: HomeCubit.get(context)
@@ -57,14 +53,18 @@ class Products extends StatelessWidget {
           child: Container(
             color: Colors.white,
             child: Column(
-              mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Image(
-                  height: MediaQuery.of(context).size.height * .2,
-                  image: NetworkImage(model.mainimage!),
+                SizedBox(
                   width: double.infinity,
-                  fit: BoxFit.fill,
+                  child: AspectRatio(
+                    aspectRatio: 1 / 1,
+                    child: Image(
+                      image: NetworkImage(model.mainimage!),
+                      width: double.infinity,
+                      fit: BoxFit.fill,
+                    ),
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(5.0),
